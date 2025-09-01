@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:DrilldownMAUIChart.ViewModel"
+             x:Class="DrilldownMAUIChart.MainPage">
+
+    <Grid>
+        <Grid.BindingContext>
+            <local:InvestmentViewModel />
+        </Grid.BindingContext>
+        <chart:SfCircularChart Margin="20">
+            <chart:SfCircularChart.Resources>
+                <DataTemplate x:Key="labelTemplate">
+                    <HorizontalStackLayout Spacing="5">
+                        <Label Text="{Binding Item.FormattedValue}" TextColor="White" FontSize="14" FontAttributes="Bold"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </chart:SfCircularChart.Resources>
+            <chart:SfCircularChart.Title>
+                <Label Text="Entity-wise Total Investment" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,20,130,5"/>
+            </chart:SfCircularChart.Title>
+            <chart:SfCircularChart.Legend>
+                <chart:ChartLegend Placement="Right"/>
+            </chart:SfCircularChart.Legend>
+            <chart:DoughnutSeries ItemsSource="{Binding DoughnutData}" 
+                                 XBindingPath="Type" 
+                                 YBindingPath="Value"
+                                 ShowDataLabels="True"
+                                 PaletteBrushes="{Binding CustomBrushes}"
+                                 LabelTemplate="{StaticResource labelTemplate}"
+                                 InnerRadius="0.3">
+
+                <chart:DoughnutSeries.SelectionBehavior>
+                    <chart:DataPointSelectionBehavior SelectionChanging="OnDoughnutSeriesSelectionChanging"/>
+                </chart:DoughnutSeries.SelectionBehavior>
+            </chart:DoughnutSeries>
+        </chart:SfCircularChart>
+    </Grid>
+
+</ContentPage>
