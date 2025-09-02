@@ -1,4 +1,4 @@
-﻿using Syncfusion.Maui.Charts;
+﻿using Syncfusion.Maui.Toolkit.Charts;
 using System.Collections;
 
 namespace DrilldownMAUIChart

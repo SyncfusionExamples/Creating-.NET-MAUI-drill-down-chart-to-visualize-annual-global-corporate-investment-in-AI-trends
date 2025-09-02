@@ -93,10 +93,10 @@ namespace DrilldownMAUIChart.ViewModel
 
             CustomBrushes = new List<Brush>()
             {
-                new SolidColorBrush(Color.FromArgb("#35BBCA")),
-                new SolidColorBrush(Color.FromArgb("#FBD90F")),
-                new SolidColorBrush(Color.FromArgb("#FE7A15")),
-                new SolidColorBrush(Color.FromArgb("#B3DD38"))
+                new SolidColorBrush(Color.FromArgb("#6A4C93")),
+                new SolidColorBrush(Color.FromArgb("#00C2D1")),
+                new SolidColorBrush(Color.FromArgb("#FF6B6B")),
+                new SolidColorBrush(Color.FromArgb("#43AA8B")),
             };
         }
     }

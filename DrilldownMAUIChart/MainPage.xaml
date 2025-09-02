@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:DrilldownMAUIChart.ViewModel"
              x:Class="DrilldownMAUIChart.MainPage">
 
+    <ContentPage.Background>
+        <RadialGradientBrush Center="0.5,0.5"
+                             Radius="0.9">
+            <GradientStop Color="#FDE2F3"
+                    Offset="0.0"/>
+            <GradientStop Color="#B8E0F2"
+                    Offset="1.0"/>
+        </RadialGradientBrush>
+    </ContentPage.Background> 
     <Grid>
         <Grid.BindingContext>
             <local:InvestmentViewModel />
@@ -21,7 +30,7 @@
                 <Label Text="Entity-wise Total Investment" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,20,130,5"/>
             </chart:SfCircularChart.Title>
             <chart:SfCircularChart.Legend>
-                <chart:ChartLegend Placement="Right"/>
+                <chart:ChartLegend ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Bottom, iOS=Bottom}"/>
             </chart:SfCircularChart.Legend>
             <chart:DoughnutSeries ItemsSource="{Binding DoughnutData}" 
                                  XBindingPath="Type" 

@@ -2,9 +2,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DrilldownMAUIChart"
-             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="DrilldownMAUIChart.SecondaryPage">
 
+
+    <ContentPage.Background>
+        <RadialGradientBrush Center="0.5,0.5"
+                             Radius="0.9">
+            <GradientStop Color="#FDE2F3"
+                    Offset="0.0"/>
+            <GradientStop Color="#B8E0F2"
+                    Offset="1.0"/>
+        </RadialGradientBrush>
+    </ContentPage.Background>
     <Grid>
         
         <chart:SfCartesianChart x:Name="chart" Margin="50">
@@ -19,7 +29,7 @@
                 </chart:CategoryAxis>
             </chart:SfCartesianChart.XAxes>
             <chart:SfCartesianChart.YAxes>
-                <chart:NumericalAxis EdgeLabelsDrawingMode="Fit">
+                <chart:NumericalAxis>
                     <chart:NumericalAxis.Title>
                         <chart:ChartAxisTitle Text="Investment Value (USD Billion)" Margin="10"/>
                     </chart:NumericalAxis.Title>
@@ -32,6 +42,7 @@
             <chart:ColumnSeries x:Name="series"
                                 XBindingPath="Year"
                                 YBindingPath="Value"
+                                EnableTooltip="True"
                                 ItemsSource="{Binding YearlyBreakdown}"/>
 
         </chart:SfCartesianChart>
