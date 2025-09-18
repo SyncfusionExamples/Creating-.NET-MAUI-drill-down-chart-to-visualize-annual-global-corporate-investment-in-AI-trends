@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:DrilldownMAUIChart"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              x:Class="DrilldownMAUIChart.SecondaryPage">
 
-
-    <ContentPage.Background>
-        <RadialGradientBrush Center="0.5,0.5"
-                             Radius="0.9">
-            <GradientStop Color="#FDE2F3"
-                    Offset="0.0"/>
-            <GradientStop Color="#B8E0F2"
-                    Offset="1.0"/>
-        </RadialGradientBrush>
-    </ContentPage.Background>
     <Grid>
-        
-        <chart:SfCartesianChart x:Name="chart" Margin="50">
-            <chart:SfCartesianChart.Title>
-                <Label Text="{Binding ChartTitle}" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            </chart:SfCartesianChart.Title>
+        <chart:SfCartesianChart x:Name="chart" HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                                Margin="{OnPlatform Android=5,Default=15,iOS=5}">
+
+            <chart:SfCartesianChart.Resources>
+                <DataTemplate x:Key="tooltipTemplate">
+                    <Label Text="{Binding Item.FormattedValue}"
+                           TextColor="White"
+                           FontSize="12"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </DataTemplate>
+            </chart:SfCartesianChart.Resources>
             <chart:SfCartesianChart.XAxes>
-                <chart:CategoryAxis>
+                <chart:CategoryAxis LabelPlacement="BetweenTicks">
                     <chart:CategoryAxis.Title>
                         <chart:ChartAxisTitle Text="Year" />
                     </chart:CategoryAxis.Title>
@@ -43,8 +40,8 @@
                                 XBindingPath="Year"
                                 YBindingPath="Value"
                                 EnableTooltip="True"
+                                TooltipTemplate="{StaticResource tooltipTemplate}"
                                 ItemsSource="{Binding YearlyBreakdown}"/>
-
         </chart:SfCartesianChart>
     </Grid>
 </ContentPage>

@@ -23,6 +23,7 @@ namespace DrilldownMAUIChart
 
     public class InvestmentModel
     {
+        public double CenterHoleSize { get; set; } = 0.5;
         public string Type { get; set; }
         public double Value { get; set; }
         public ObservableCollection<YearlyInvestmentModel> YearlyBreakdown { get; set; }
