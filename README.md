@@ -56,7 +56,7 @@ Custom brushes and smart label formatting
 
 ## Output
 
-![AIInvestments_Charts_Blog_Demo]()
+![AIInvestments_Charts_Blog_Demo](https://github.com/user-attachments/assets/58ba60c0-bd96-4ff8-b120-a6964471cbba)
 
 ## Troubleshooting
 
