@@ -62,11 +62,17 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
-		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="1.0.6" />
+		<PackageReference Include="Syncfusion.Maui.Toolkit" Version="*" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="SecondaryPage.xaml">
+	  <Compile Update="Views\YearlyInvestmentPage.xaml.cs">
+	    <DependentUpon>YearlyInvestmentPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\YearlyInvestmentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

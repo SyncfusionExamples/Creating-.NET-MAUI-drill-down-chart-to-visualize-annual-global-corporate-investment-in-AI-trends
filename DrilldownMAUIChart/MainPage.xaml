@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:local="clr-namespace:DrilldownMAUIChart.ViewModel"
+             xmlns:local="clr-namespace:DrilldownMAUIChart"
              x:Class="DrilldownMAUIChart.MainPage">
 
     <ContentPage.Resources>
@@ -23,27 +23,44 @@
             </chart:SfCircularChart.Resources>
             <chart:SfCircularChart.Title>
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <Path Margin="0,10" Grid.Column="0" Grid.Row="0"
+
+                    <Path Margin="0,10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                                   Data="{StaticResource PathData}"
-                                  Fill="Gray"
-                                  HeightRequest="35"
-                                  WidthRequest="35"
+                                  Fill="#4285F4"
+                                  HeightRequest="45"
+                                  WidthRequest="45"
                                   VerticalOptions="Center"/>
-                    <Label Margin="0,10" Grid.Column="1" Grid.Row="0"
-                                   Text="Entity-wise Total Investment"
-                                   FontSize="{OnPlatform Default=26,Android=20,iOS=20}"
+
+                    <Label Margin="10,6,0,0" Grid.Column="1" Grid.Row="0"
+                                   Text="Global AI Investment by Entity Type"
+                                   FontSize="{OnPlatform Default=18,Android=20,iOS=16}"
                                    FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"/>
+
+                    <Label Margin="10,0,0,10" Grid.Column="1" Grid.Row="1"
+                                   Text="Tap a segment to explore detailed year-wise trends"
+                                   FontSize="{OnPlatform Default=14,Android=12,iOS=12}"
+                                   TextColor="#64748B"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Start"/>
                 </Grid>
             </chart:SfCircularChart.Title>
             <chart:SfCircularChart.Legend>
-                <chart:ChartLegend ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Bottom, iOS=Bottom}"/>
+                <local:LegendExt ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Bottom, iOS=Bottom}">
+                    <local:LegendExt.ItemsLayout>
+                        <FlexLayout WidthRequest="370" Wrap="Wrap" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    </local:LegendExt.ItemsLayout>
+                </local:LegendExt>
             </chart:SfCircularChart.Legend>
             <chart:DoughnutSeries ItemsSource="{Binding DoughnutData}" 
                                  XBindingPath="Type" 
@@ -51,6 +68,7 @@
                                  ShowDataLabels="True"
                                  PaletteBrushes="{Binding CustomBrushes}"
                                  LabelTemplate="{StaticResource labelTemplate}"
+                                 CapStyle="BothFlat"
                                  InnerRadius="0.5">
 
                 <chart:DoughnutSeries.SelectionBehavior>
@@ -64,12 +82,11 @@
                         </Border.StrokeShape>
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                             <Label FontSize="20" FontAttributes="Bold" Text="Total Investment :" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                            <Label FontSize="20" Text="1,584.98 billion" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label FontSize="20" Text="15.8 Billion" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                         </StackLayout>
                     </Border>
                 </chart:DoughnutSeries.CenterView>
             </chart:DoughnutSeries>
         </chart:SfCircularChart>
     </Grid>
-
 </ContentPage>

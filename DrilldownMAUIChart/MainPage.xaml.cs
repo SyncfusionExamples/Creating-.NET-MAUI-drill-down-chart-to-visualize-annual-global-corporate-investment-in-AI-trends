@@ -7,8 +7,7 @@ namespace DrilldownMAUIChart
     {
         public MainPage()
         {
-            InitializeComponent();
-            
+            InitializeComponent(); 
         }
 
         private void OnDoughnutSeriesSelectionChanging(object sender, ChartSelectionChangingEventArgs e)
@@ -17,8 +16,16 @@ namespace DrilldownMAUIChart
             var items = series?.ItemsSource as IList;
             int selectedIndex = e.NewIndexes[0];
             var selectedData = items![selectedIndex] as InvestmentModel;
-            Navigation.PushAsync(new SecondaryPage(selectedData!, series!.PaletteBrushes[selectedIndex]));
+            Navigation.PushAsync(new YearlyInvestmentPage(selectedData!, series!.PaletteBrushes[selectedIndex]));
             e.Cancel = true;
+        }
+    }
+
+    public class LegendExt : ChartLegend
+    {
+        protected override double GetMaximumSizeCoefficient()
+        {
+            return 1;
         }
     }
 }
