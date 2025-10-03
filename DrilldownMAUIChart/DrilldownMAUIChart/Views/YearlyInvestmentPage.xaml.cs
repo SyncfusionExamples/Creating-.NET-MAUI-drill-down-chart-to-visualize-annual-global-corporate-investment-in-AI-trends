@@ -1,7 +1,4 @@
-using Syncfusion.Maui.Toolkit.Charts;
-
 namespace DrilldownMAUIChart;
-
 public partial class YearlyInvestmentPage : ContentPage
 {
     public YearlyInvestmentPage(InvestmentModel selectedData, Brush fill)

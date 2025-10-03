@@ -4,13 +4,21 @@ namespace DrilldownMAUIChart
 {
     public class InvestmentViewModel
     {
-        public ObservableCollection<InvestmentModel> DoughnutData { get; set; }
+        #region Fields
+
         private ObservableCollection<YearlyInvestmentModel> MergerAcquisitionData { get; set; }
         private ObservableCollection<YearlyInvestmentModel> PrivateInvestmentData { get; set; }
         private ObservableCollection<YearlyInvestmentModel> PublicOfferingData { get; set; }
         private ObservableCollection<YearlyInvestmentModel> MinorityStakeData { get; set; }
 
-        public List<Brush> CustomBrushes { get; set; }
+        #endregion
+
+        #region Properties
+
+        public ObservableCollection<InvestmentModel> DoughnutData { get; set; }
+        public List<Brush> CustomBrushes { get; set; } 
+
+        #endregion
 
         public InvestmentViewModel()
         {

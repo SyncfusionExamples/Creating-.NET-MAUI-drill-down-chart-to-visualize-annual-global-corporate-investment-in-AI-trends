@@ -5,7 +5,17 @@
              x:Class="DrilldownMAUIChart.YearlyInvestmentPage">
 
     <ContentPage.Resources>
-        <x:String x:Key="HeaderIconPath">M24,17.000001L24,26.000002 27,26.000002 27,17.000001z M22,15.000001L29,15.000001 29,28.000002 22,28.000002z M6,14.000001L6,26.000002 9,26.000002 9,14.000001z M4,12.000001L11,12.000001 11,28.000002 4,28.000002z M15,4.0000005L15,26 18,26 18,4.0000005z M13,2.0000005L20,2.0000005 20,28 13,28z M0,0L2,0 2,30 32,30 32,32 0,32z</x:String>
+        <x:String x:Key="HeaderIconPath">M3.2999878,20.999992 L3.2999878,31.099993 0,31.099993 0,24.300009z 
+                                    M7.4000244,16.900018 L7.4000244,31.099993 4.0999756,31.099993 4.0999756,20.30001z 
+                                    M16.400024,16.499994 L18.599976,18.700004 19.700012,17.599998 19.700012,31.099993 16.400024,31.099993z 
+                                    M23.799988,13.600001 L23.799988,31.199999 20.5,31.199999 20.5,16.900018z 
+                                    M11.5,12.800013 L11.5,31.099993 8.2000122,31.099993 8.2000122,16.1z 
+                                    M12.299988,12.400019 L15.599976,15.700006 15.599976,31.099993 12.299988,31.099993z 
+                                    M27.900024,9.499996 L27.900024,31.199999 24.599976,31.199999 24.599976,12.800013z 
+                                    M28.700012,9.1000021 L29,9.1000021 32,12.100001 32,31.099993 28.700012,31.099993z 
+                                    M31.400024,0 L31.099976,7.2000096 28.900024,4.9999983 18.200012,15.700006 
+                                    17.900024,15.999993 11.700012,9.8000143 0.70001221,20.80001 0.70001221,15.800012 
+                                    11.599976,4.8000167 17.900024,11.100002 26.400024,2.6000052 24.200012,0.4000244z</x:String>
     </ContentPage.Resources>
 
     <Grid>
@@ -29,41 +39,20 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
-                <Border Grid.Row="0"
-                        Grid.Column="0"
-                        Grid.RowSpan="2"
-                        BackgroundColor="#4285F4"
-                        StrokeShape="RoundRectangle 10"
-                        WidthRequest="45"
-                        HeightRequest="45"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Margin="0,2,0,0">
-                    <Path Data="{StaticResource HeaderIconPath}" Fill="#FF000000" Margin="10,5,10,10">
-                        <Path.RenderTransform>
-                            <TransformGroup>
-                                <TransformGroup.Children>
-                                    <RotateTransform Angle="0"/>
-                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
-                                </TransformGroup.Children>
-                            </TransformGroup>
-                        </Path.RenderTransform>
-                    </Path>
-                </Border>
-
+                <StackLayout WidthRequest="10" HeightRequest="40" Grid.RowSpan="2"  Margin="-50,8,0,6" Orientation="Vertical"
+                     BackgroundColor="#95DB9C" />
                 <StackLayout Grid.Row="0"
                              Grid.Column="1"
                              Spacing="3"
                              VerticalOptions="Center"
-                             Margin="15,0,10,0">
-                    <Label Text="Annual AI Investment Trends"
+                             Margin="-40,0,10,0">
+                    <Label Text="Corporate AI Funding Patterns Through the Years"
                            FontSize="{OnPlatform Android=18, Default=20, iOS=16}"
                            FontAttributes="Bold"
                            TextColor="#1A1A1A"
                            LineBreakMode="WordWrap"/>
-                    <Label Text="{Binding Type, StringFormat='Year-wise breakdown for {0} (USD, Billions)'}"
-                           FontSize="{OnPlatform Android=11, Default=13, iOS=11}"
+                    <Label Text="{Binding Type, StringFormat='A visual journey through corporate investment trends across years.'}"
+                           FontSize="{OnPlatform Default=14,Android=12,iOS=12}"
                            TextColor="#64748B"
                            FontAttributes="None"
                            LineBreakMode="WordWrap"/>
@@ -84,20 +73,33 @@
                            VerticalOptions="Center"/>
                 </DataTemplate>
             </chart:SfCartesianChart.Resources>
+
             <chart:SfCartesianChart.XAxes>
                 <chart:CategoryAxis LabelPlacement="BetweenTicks">
+                    <chart:CategoryAxis.MajorGridLineStyle>
+                        <chart:ChartLineStyle StrokeDashArray="2,3"
+                                      Stroke="LightGray"
+                                      StrokeWidth="1"/>
+                    </chart:CategoryAxis.MajorGridLineStyle>
                     <chart:CategoryAxis.Title>
                         <chart:ChartAxisTitle Text="Year"/>
                     </chart:CategoryAxis.Title>
                 </chart:CategoryAxis>
             </chart:SfCartesianChart.XAxes>
+            
             <chart:SfCartesianChart.YAxes>
                 <chart:NumericalAxis x:Name="yAxis" RangePadding="None">
+                    <chart:NumericalAxis.MajorGridLineStyle>
+                        <chart:ChartLineStyle StrokeDashArray="2,3"
+                                      Stroke="LightGray"
+                                      StrokeWidth="1"/>
+                    </chart:NumericalAxis.MajorGridLineStyle>
                     <chart:NumericalAxis.LabelStyle>
                         <chart:ChartAxisLabelStyle LabelFormat="$0,,,B"/>
                     </chart:NumericalAxis.LabelStyle>
                 </chart:NumericalAxis>
             </chart:SfCartesianChart.YAxes>
+            
             <chart:ColumnSeries x:Name="series"
                                 XBindingPath="Year"
                                 YBindingPath="Value"

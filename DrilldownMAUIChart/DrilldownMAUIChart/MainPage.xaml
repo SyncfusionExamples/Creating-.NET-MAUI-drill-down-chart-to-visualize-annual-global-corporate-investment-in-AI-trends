@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" Shell.NavBarIsVisible="False"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
              xmlns:local="clr-namespace:DrilldownMAUIChart"
              x:Class="DrilldownMAUIChart.MainPage">
 
-    <ContentPage.Resources>
-        <x:String x:Key="PathData">M14.345032,3.3099817L14.345032,17.654914 28.689026,17.654914C28.689026,25.579871 22.268982,31.999839 14.345032,31.999839 6.419983,32.099845 4.6892062E-08,25.679877 0,17.754913 4.6892062E-08,9.830947 6.419983,3.3099817 14.345032,3.3099817z M17.655029,0C25.580017,0,32,6.4199678,32,14.344925L17.655029,14.344925z</x:String>
-    </ContentPage.Resources>
-
-    <Grid>
+    <Grid >
         <Grid.BindingContext>
             <local:InvestmentViewModel />
         </Grid.BindingContext>
-        <chart:SfCircularChart Margin="20,0,20,0">
+        <chart:SfCircularChart>
             <chart:SfCircularChart.Resources>
                 <DataTemplate x:Key="labelTemplate">
-                    <HorizontalStackLayout Spacing="5">
-                        <Label Text="{Binding Item.FormattedValue}" TextColor="White" FontSize="14" FontAttributes="Bold"/>
+                    <HorizontalStackLayout Spacing="4">
+                        <Label Text="{Binding Item.FormattedValue}" TextColor="White" FontSize="{OnPlatform Default=14,Android=8,iOS=8}" FontAttributes="Bold"/>
                     </HorizontalStackLayout>
                 </DataTemplate>
             </chart:SfCircularChart.Resources>
             <chart:SfCircularChart.Title>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Path Margin="0,10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-                                  Data="{StaticResource PathData}"
-                                  Fill="#4285F4"
+                    <Image Margin="0,10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                                  Source="head.png"
                                   HeightRequest="45"
                                   WidthRequest="45"
                                   VerticalOptions="Center"/>
 
                     <Label Margin="10,6,0,0" Grid.Column="1" Grid.Row="0"
-                                   Text="Global AI Investment by Entity Type"
-                                   FontSize="{OnPlatform Default=18,Android=20,iOS=16}"
+                                   Text="Global Patterns in AI Investment Distribution"
+                                   FontSize="{OnPlatform Default=20,Android=20,iOS=16}"
                                    FontAttributes="Bold"
                                    VerticalOptions="Center"
-                                   HorizontalOptions="Start"/>
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
 
-                    <Label Margin="10,0,0,10" Grid.Column="1" Grid.Row="1"
-                                   Text="Tap a segment to explore detailed year-wise trends"
-                                   FontSize="{OnPlatform Default=14,Android=12,iOS=12}"
-                                   TextColor="#64748B"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Start"/>
                 </Grid>
             </chart:SfCircularChart.Title>
             <chart:SfCircularChart.Legend>
-                <local:LegendExt ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Bottom, iOS=Bottom}">
+                <local:LegendExt ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Right, iOS=Right}">
                     <local:LegendExt.ItemsLayout>
-                        <FlexLayout WidthRequest="370" Wrap="Wrap" VerticalOptions="Start" HorizontalOptions="Start"/>
+                        <FlexLayout
+                            WidthRequest="370"
+                            HeightRequest="72"
+                            Direction="Column"
+                            Wrap="Wrap"
+                            AlignItems="Start"
+                            AlignContent="Start"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"/>
                     </local:LegendExt.ItemsLayout>
                 </local:LegendExt>
             </chart:SfCircularChart.Legend>
@@ -69,22 +67,17 @@
                                  PaletteBrushes="{Binding CustomBrushes}"
                                  LabelTemplate="{StaticResource labelTemplate}"
                                  CapStyle="BothFlat"
-                                 InnerRadius="0.5">
+                                 InnerRadius="{OnPlatform Default=0.5,Android=0.35,iOS=0.35}">
 
                 <chart:DoughnutSeries.SelectionBehavior>
                     <chart:DataPointSelectionBehavior SelectionChanging="OnDoughnutSeriesSelectionChanging"/>
                 </chart:DoughnutSeries.SelectionBehavior>
 
                 <chart:DoughnutSeries.CenterView>
-                    <Border HeightRequest="{Binding CenterHoleSize}" WidthRequest="{Binding CenterHoleSize}">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="250"/>
-                        </Border.StrokeShape>
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <Label FontSize="20" FontAttributes="Bold" Text="Total Investment :" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                            <Label FontSize="20" Text="15.8 Billion" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label FontSize="{OnPlatform Default=20,Android=10,iOS=10}" FontAttributes="Bold" Text="Total Investment" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label FontSize="{OnPlatform Default=20,Android=10,iOS=10}" Text="1,584.98 Billion" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                         </StackLayout>
-                    </Border>
                 </chart:DoughnutSeries.CenterView>
             </chart:DoughnutSeries>
         </chart:SfCircularChart>

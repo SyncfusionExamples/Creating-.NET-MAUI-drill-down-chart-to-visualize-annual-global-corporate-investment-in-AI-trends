@@ -1,40 +1,43 @@
-# Visualize Annual Global Corporate Investment in AI with .NET MAUI Doughnut & Column Charts
+# Visualize Global AI Investment with Drilldown Charts from the Toolkit 
 
-This sample demonstrates how to visualize global corporate investment in Artificial Intelligence using Syncfusion’s .NET MAUI charting controls. It features an interactive Doughnut Chart for entity-wise investment breakdown and a Column Chart for year-wise investment trends.
+This blog will guide you through building an interactive data visualization experience using Syncfusion’s .NET MAUI charting controls. You'll learn how to present global corporate investment in Artificial Intelligence (AI) using drilldown-enabled Doughnut and Column Charts, making complex data more accessible and engaging.
+
+## Understanding Drilldown Charts
+
+Drilldown charts are a powerful way to explore hierarchical or multi-level data interactively. Instead of displaying all data at once, they start with a high-level summary and allow users to "drill down" into more detailed views by clicking on specific chart elements.
 
 ## Key Features
 
-**1. Interactive Doughnut Chart:**
+**1. Doughnut Chart with Drilldown:**
 
-This chart provides a high-level overview of total AI investments categorized by entity type—such as Mergers & Acquisitions (M&A), Private Investment, Public Offering, and Minority Stake. Each segment is clickable, allowing users to interact with the data and explore specific categories in more detail. The chart also uses smart labels and exploding segments to make the data easier to read and visually engaging.
+- Visualizes entity-wise AI investment.
+- Supports drilldown interaction: tapping a segment reveals detailed investment categories for the selected entity.
+- Includes exploding segments for emphasis and clarity.
+- Smart labels ensure readability even with dense data.
 
-**2. Column Chart:**
+**2. Custom Styling:**
 
-Once a user taps a segment in the Doughnut Chart, they’re taken to a Column Chart that shows year-wise investment trends (from 2013 to 2023) for the selected entity type. This helps users analyze how investment patterns have evolved over time, making it ideal for spotting growth trends or shifts in funding priorities.
+- Uses custom brushes to differentiate investment categories visually.
+- Legend customization enhances clarity and aligns with the chart’s color scheme.
 
-**3. Drill-Down Navigation:**
+**3. Column Chart with Drilldown:**
 
-This feature enhances interactivity by allowing users to tap on a segment of the Doughnut Chart and instantly navigate to a detailed Column Chart view. It helps users explore specific investment categories in depth, making the data exploration seamless and intuitive.
-
-**4. Custom Styling:**
-
-Both charts use a consistent set of brushes (colors and styles) to maintain visual harmony. This ensures that the same entity type is represented with the same color across charts, improving recognition and reducing cognitive load for users.
-
-**5. Smart Labels & Exploding Segments:**
-
-Smart labels automatically adjust to avoid overlap and improve readability, especially in dense data views. Exploding segments (slightly separated slices) in the Doughnut Chart highlight selected or important data points, drawing attention to key insights.
+- Displays year-wise investment trends.
+- Drilldown reveals sector-specific or regional breakdowns for each year.
+- Features smart labels for better data presentation.
+- Supports exploding segments to highlight key data points.
 
 ## Syncfusion Controls Used
 
 [SfCircularChart](https://help.syncfusion.com/maui/circular-charts/getting-started)
 
-SfCircularChart with DoughnutSeries
-SelectionChanging event for drill-down interaction
+- SfCircularChart with DoughnutSeries
+- SelectionChanging event for drill-down interaction
+- Smart labels formatting and Custom brushes
 
 [SfCartesianChart](https://help.syncfusion.com/maui/cartesian-charts/getting-started)
 
-SfCartesianChart with ColumnSeries
-Custom brushes and smart label formatting
+- SfCartesianChart with ColumnSeries
 
 ## Use Cases
 
