@@ -6,6 +6,7 @@ public partial class YearlyInvestmentPage : ContentPage
         InitializeComponent();
         this.BindingContext = selectedData;
         series.Fill = fill;
+        AccentBar.Background = fill;
 
         if (selectedData?.YearlyBreakdown != null && selectedData.YearlyBreakdown.Any())
         {

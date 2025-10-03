@@ -39,8 +39,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <StackLayout WidthRequest="10" HeightRequest="40" Grid.RowSpan="2"  Margin="-50,8,0,6" Orientation="Vertical"
-                     BackgroundColor="#95DB9C" />
+                <StackLayout x:Name="AccentBar" WidthRequest="10" HeightRequest="40" Grid.RowSpan="2"  Margin="-50,8,0,6" Orientation="Vertical" />
                 <StackLayout Grid.Row="0"
                              Grid.Column="1"
                              Spacing="3"
