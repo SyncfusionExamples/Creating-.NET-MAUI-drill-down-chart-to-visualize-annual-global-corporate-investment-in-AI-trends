@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" Shell.NavBarIsVisible="False"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:local="clr-namespace:DrilldownMAUIChart"
+             x:Class="DrilldownMAUIChart.MainPage">
+
+    <Grid >
+        <Grid.BindingContext>
+            <local:InvestmentViewModel />
+        </Grid.BindingContext>
+        <chart:SfCircularChart>
+            <chart:SfCircularChart.Resources>
+                <DataTemplate x:Key="labelTemplate">
+                    <HorizontalStackLayout Spacing="4">
+                        <Label Text="{Binding Item.FormattedValue}" TextColor="White" FontSize="{OnPlatform Default=14,Android=8,iOS=8}" FontAttributes="Bold"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </chart:SfCircularChart.Resources>
+            <chart:SfCircularChart.Title>
+                    <Grid HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                    <Image Margin="0,10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                                  Source="head.png"
+                                  HeightRequest="45"
+                                  WidthRequest="45"
+                                  VerticalOptions="Center"/>
+
+                    <Label Margin="10,6,0,0" Grid.Column="1" Grid.Row="0"
+                                   Text="Global Patterns in AI Investment Distribution"
+                                   FontSize="{OnPlatform Default=20,Android=20,iOS=16}"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"/>
+
+                </Grid>
+            </chart:SfCircularChart.Title>
+            <chart:SfCircularChart.Legend>
+                <local:LegendExt ToggleSeriesVisibility="True" Placement= "{OnPlatform Default=Right, Android=Right, iOS=Right}">
+                    <local:LegendExt.ItemsLayout>
+                        <FlexLayout
+                            WidthRequest="370"
+                            HeightRequest="72"
+                            Direction="Column"
+                            Wrap="Wrap"
+                            AlignItems="Start"
+                            AlignContent="Start"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"/>
+                    </local:LegendExt.ItemsLayout>
+                </local:LegendExt>
+            </chart:SfCircularChart.Legend>
+            <chart:DoughnutSeries ItemsSource="{Binding DoughnutData}" 
+                                 XBindingPath="Type" 
+                                 YBindingPath="Value"
+                                 ShowDataLabels="True"
+                                 PaletteBrushes="{Binding CustomBrushes}"
+                                 LabelTemplate="{StaticResource labelTemplate}"
+                                 CapStyle="BothFlat"
+                                 InnerRadius="{OnPlatform Default=0.5,Android=0.35,iOS=0.35}">
+
+                <chart:DoughnutSeries.SelectionBehavior>
+                    <chart:DataPointSelectionBehavior SelectionChanging="OnDoughnutSeriesSelectionChanging"/>
+                </chart:DoughnutSeries.SelectionBehavior>
+
+                <chart:DoughnutSeries.CenterView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label FontSize="{OnPlatform Default=20,Android=10,iOS=10}" FontAttributes="Bold" Text="Total Investment" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            <Label FontSize="{OnPlatform Default=20,Android=10,iOS=10}" Text="1,584.98 Billion" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+                </chart:DoughnutSeries.CenterView>
+            </chart:DoughnutSeries>
+        </chart:SfCircularChart>
+    </Grid>
+</ContentPage>
