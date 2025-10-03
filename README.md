@@ -59,7 +59,7 @@ Drilldown charts are a powerful way to explore hierarchical or multi-level data 
 
 ## Output
 
-![AIInvestments_Charts_Blog_Demo]()
+![AIInvestments_Charts_Blog_Demo](https://github.com/user-attachments/assets/7a47dd95-0c03-4826-aa01-bcb6e741c3d2)
 
 ## Troubleshooting
 
