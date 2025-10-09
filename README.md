@@ -67,4 +67,4 @@ Drilldown charts are a powerful way to explore hierarchical or multi-level data 
 
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to short and build the project.
 
-For a step-by-step procedure, refer to the [Visualize Global AI Investment with Drilldown Charts from the Toolkit]().
+For a step-by-step procedure, refer to the [Visualize Global AI Investment with Drilldown Charts from the Toolkit](https://www.syncfusion.com/blogs/post/dotnet-maui-drilldown-charts).
